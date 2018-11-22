@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
 	
 	strcpy(dst, src);
 	
-	printf("%s\n", dst);
+	printf("%s (%d)\n", dst, strlen(dst));
 	
 	return 0;
 }
