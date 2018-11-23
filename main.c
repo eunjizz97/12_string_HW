@@ -6,42 +6,38 @@
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char *argv[]) {
-	FILE *rfp = NULL;
-	FILE *wfp = NULL;
+	FILE *fp = NULL;
 	int i;
-	char ogf[100];
-	char cpyf[100];
-	char str[100];
-	int len = 0;
+	char filename[100];		//사용자가 검색하려는 파일 이름 
+	char word[100];			//사용자가 찾으려는 단어 
+	char str[100];			//fgets 함수를 통해 한줄 입력 받은 string 
+
 	
 	
 	printf("original file name : ");
-	scanf("%s", ogf);
-	printf("copy file name : ");
-	scanf("%s", cpyf);
+	scanf("%s", filename);
+	printf("word to find : ");
+	scanf("%s", word);
 		
-	rfp = fopen(ogf, "r");
-	wfp = fopen(cpyf, "w");
+	fp = fopen(filename, "r");
 	
 	
-	if(rfp == NULL || wfp == NULL)
+	if(fp == NULL)
 		printf("파일 못 열음\n");
-
 
 		
 	for(i=0;i<3;i++){
-	
-		fgets(str, 100, rfp);
-		fprintf(wfp, "%s", str);
-		len += strlen(str);
+		
+		fgets(str, 100, fp);
+		if(strncmp(word, str, strlen(word))==0)
+			printf("find a word %s\n", word);
 		
 	}
 	
 
-	printf("copy success! (%d bytes copied)\n", len+1); 
+	printf("Serch done!\n"); 
 	
-	fclose(rfp);
-	fclose(wfp);
+	fclose(fp);
 	
 	return 0;
 }
