@@ -6,22 +6,14 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp = NULL;
-	char str1[100];
-	char str2[100];
-	char str3[100];
+	char c;
 		
-	fp = fopen("c:\\Code\\sample.txt", "w");
+	fp = fopen("c:\\Code\\sample.txt", "r");
 	if(fp == NULL)
 		printf("파일 못 열음\n");
 		
-	printf("input a word : ");
-	scanf("%s", str1);
-	printf("input a word : ");
-	scanf("%s", str2);
-	printf("input a word : ");
-	scanf("%s", str3);
-	
-	fprintf(fp, "%s\n%s\n%s\n", str1, str2, str3);
+	while((c=fgetc(fp)) != EOF)
+		putchar(c);
 	
 	fclose(fp);
 	
